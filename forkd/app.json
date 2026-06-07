@@ -3,6 +3,7 @@
     "name": "forkd",
     "slug": "forkd",
     "version": "1.0.0",
+    "scheme": "forkd",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",

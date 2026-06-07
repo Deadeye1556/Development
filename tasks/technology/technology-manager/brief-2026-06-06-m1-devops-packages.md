@@ -3,8 +3,8 @@
 **FOR:** DevOps Engineer
 **MILESTONE:** M1 — Authentication & User Profiles
 **TASK:** Add app scheme to `app.json` and install the four packages required for Supabase Auth and Google OAuth to function on device
-**PRIORITY:** P2 — High. Google OAuth cannot be tested and M1 gate cannot close until these are in place.
-**DUE:** Before Frontend Engineer begins auth screen implementation
+**PRIORITY:** P1 — Critical / Blocking. Frontend Engineer cannot wire auth screens until these packages are installed and app.json is configured. (Inherited from CEO brief — no adjustment.)
+**DUE:** 2026-06-07 — tomorrow
 
 ---
 
@@ -40,7 +40,7 @@ npx expo install @supabase/supabase-js @react-native-async-storage/async-storage
 
 Use npx expo install (not npm install) — Expo manages compatible versions automatically.
 
-DEADLINE: Before Frontend Engineer begins auth screen implementation
+DEADLINE: 2026-06-07 — tomorrow. Frontend Engineer is waiting.
 ```
 
 ---
