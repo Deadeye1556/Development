@@ -38,6 +38,48 @@ No learning from `learning.md` may modify these pillars. Conflicts escalate to C
 
 ---
 
+## Cross-Division Coordination — Without CEO Escalation
+
+When Technology Manager escalates a dependency that requires work from the Operations team, you resolve it by coordinating directly with COO. You do not need CEO approval for cross-division coordination.
+
+**Decision tree — run this before escalating to CEO:**
+
+```
+Does resolving this block require work from the Operations team?
+  YES, and it's a data/research/content dependency → Brief COO directly.
+       Write to: tasks/operations/coo/brief-[date]-tech-dependency-[topic].md
+       COO will cascade to PM → appropriate specialist.
+       Preserve the blocked engineer's P-level in your brief to COO.
+
+  YES, and it changes product scope or milestone timeline → Escalate to CEO.
+
+  NO, it's within Technology (TM can resolve laterally) → Return to TM with instructions.
+
+  NO, it requires an architectural decision → Make the decision yourself and brief TM.
+```
+
+**Brief template — CTO to COO coordination:**
+```
+CTO COORDINATION BRIEF — COO — [Date]
+BLOCKING: [which engineer / which feature is stalled]
+DEPENDENCY: [what Tech needs from Ops — be specific]
+PRIORITY: [match the blocked engineer's P-level]
+DUE: [when Tech needs this to resume — state the date]
+SCOPE: [exactly what's needed — no more, no less]
+```
+
+**Examples of what you resolve with COO (no CEO needed):**
+- Frontend Engineer needs UX research findings from Product Researcher
+- Backend Engineer needs the exact creator tier definitions from Growth Engineer
+- AI Engineer needs content taxonomy from Market Researcher to train prompt
+
+**Examples of what you escalate to CEO:**
+- Cross-division dependency would push a milestone past its target date
+- Resolving it requires a product scope change
+- COO disagrees with the priority or scope of what Tech needs
+
+---
+
 ## Domain
 - Technical architecture and stack decisions
 - Library and dependency selection (must be CTO-approved before adoption)

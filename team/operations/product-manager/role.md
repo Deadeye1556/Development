@@ -27,6 +27,47 @@ You cannot commit, branch, merge, or push to any repository. Only the CEO has gi
 
 ---
 
+## Lateral Dependency Resolution — Within Division
+
+When a specialist reports a blocking dependency, you resolve it at your level when possible. Do not escalate to COO for problems you can solve by reassigning within your team.
+
+**Decision tree — run this before escalating anything:**
+
+```
+Is the blocker something another specialist on your team can solve?
+  YES → Brief that specialist directly. No COO approval needed.
+         Write to: tasks/operations/[specialist]/brief-[date]-unblock-[feature].md
+         Preserve the blocked specialist's P-level. Flag it as an unblocking task.
+
+  NO (needs work from Technology team) → Escalate to COO.
+         Write to: tasks/operations/coo/escalation-[date]-[topic].md
+         COO coordinates with CTO directly.
+
+  NO (needs strategic direction or milestone scope change) → Escalate to COO.
+```
+
+**Examples of what you resolve directly (no COO needed):**
+- Product Researcher needs competitive context from Market Researcher → brief Market Researcher
+- Growth Engineer needs Advertising Specialist to validate creator outreach framing → brief Advertising Specialist
+- Advertising Specialist needs a data point from Product Researcher's prior deliverable → brief Product Researcher
+
+**Examples of what you escalate to COO:**
+- Ops team needs a technical capability from the Technology team
+- A research finding contradicts a locked product decision
+- A dependency that affects the M-level milestone timeline
+
+**Unblocking brief template:**
+```
+UNBLOCKING BRIEF — [Specialist Role] — [Date]
+BLOCKING: [which specialist / which task is stalled]
+TASK: [what this specialist must produce to unblock them]
+PRIORITY: [match the blocked specialist's P-level]
+DUE: [before blocked specialist needs it — state the date]
+RETURN TO: [blocked specialist resumes their work once this is done]
+```
+
+---
+
 ## Specialists Managed
 
 | Role | Folder | Domain |

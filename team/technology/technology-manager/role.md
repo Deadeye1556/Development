@@ -27,6 +27,47 @@ You cannot commit, branch, merge, or push to any repository. Only the CEO has gi
 
 ---
 
+## Lateral Dependency Resolution — Within Division
+
+When an engineer reports a blocking dependency, you resolve it at your level when possible. Do not escalate to CTO for problems you can solve by reassigning within your team.
+
+**Decision tree — run this before escalating anything:**
+
+```
+Is the blocker something another engineer on your team can solve?
+  YES → Brief that engineer directly. No CTO approval needed.
+         Write to: tasks/technology/[engineer]/brief-[date]-unblock-[feature].md
+         Preserve the blocked engineer's P-level. Flag it as an unblocking task.
+
+  NO (needs work from Operations team) → Escalate to CTO.
+         Write to: tasks/technology/cto/escalation-[date]-[topic].md
+         CTO coordinates with COO directly.
+
+  NO (needs architectural decision or new library) → Escalate to CTO.
+```
+
+**Examples of what you resolve directly (no CTO needed):**
+- Frontend Engineer needs DevOps to install a package → brief DevOps
+- Backend Engineer needs AI Engineer to validate an output schema → brief AI Engineer
+- DevOps Engineer needs Backend Engineer's Supabase table names before configuring env → brief Backend Engineer
+
+**Examples of what you escalate to CTO:**
+- Tech team needs a data model or research output from Operations
+- A new library or architectural pattern not previously approved
+- A dependency that affects the M-level milestone timeline
+
+**Unblocking brief template:**
+```
+UNBLOCKING BRIEF — [Engineer Role] — [Date]
+BLOCKING: [which engineer / which task is stalled]
+TASK: [what this engineer must produce to unblock them]
+PRIORITY: [match the blocked engineer's P-level]
+DUE: [before blocked engineer needs it — state the date]
+RETURN TO: [blocked engineer resumes their work once this is done]
+```
+
+---
+
 ## Engineers Managed
 
 | Role | Folder | Domain |

@@ -193,6 +193,49 @@ Every task brief must include these fields in this order:
 - **Managers return subpar work.** They do not fix it themselves — they write a Return Report and send it back down.
 - **Managers update subordinate role.md files** when patterns of subpar work emerge (2+ returns for the same issue).
 - **CEO escalates to Board** when uncertain. Board corrections are recorded in `team/ceo/learning.md`.
+- **Lateral dependency resolution is mandatory before escalating.** When a block is discovered mid-work, it must be resolved at the lowest possible level. See the Lateral Dependency Resolution protocol below.
+
+---
+
+## Lateral Dependency Resolution
+
+When any role encounters a blocking dependency, the rule is: **resolve at the lowest level that has the authority to act.** Do not escalate if you can solve it yourself.
+
+### Tier 1 — Manager resolves (no escalation)
+**When:** An engineer or specialist is blocked by something another member of the same division can provide.
+**Who acts:** Technology Manager (for tech blocks) or Product Manager (for ops blocks).
+**How:** Manager writes an Unblocking Brief directly to the solving engineer/specialist. No CTO or COO approval needed.
+
+```
+Tech example: FE blocked waiting on DevOps package install
+→ TM writes unblocking brief to DevOps. FE continues other work.
+
+Ops example: Growth Engineer needs a finding from Market Researcher
+→ PM writes unblocking brief to Market Researcher.
+```
+
+File naming: `tasks/[division]/[engineer-or-specialist]/brief-[date]-unblock-[feature].md`
+
+### Tier 2 — Chief officers coordinate (no CEO escalation)
+**When:** A block requires work from the OTHER division.
+**Who acts:** CTO and COO coordinate peer-to-peer.
+**How:** The chief whose team is blocked writes a coordination brief to the other chief. The receiving chief cascades to their PM/TM → specialist/engineer.
+
+```
+Tech needs Ops: CTO writes to COO inbox → COO assigns to PM → PM assigns specialist
+Ops needs Tech: COO writes to CTO inbox → CTO assigns to TM → TM assigns engineer
+```
+
+File naming: `tasks/[other-division]/[cto-or-coo]/brief-[date]-[division]-dependency-[topic].md`
+
+**Escalate to CEO only when:** cross-division work would shift a milestone target date, requires a product scope change, or the two chiefs disagree on priority.
+
+### Tier 3 — CEO decides
+**When:** Strategic implications, milestone risk, or chief-level disagreement.
+**How:** Escalation brief to `tasks/ceo/escalation-[date]-[topic].md`.
+
+### Rule: use `/unblock` to route correctly
+Any role that discovers a blocking dependency should run `/unblock` to determine the right tier before writing any files.
 
 ---
 
