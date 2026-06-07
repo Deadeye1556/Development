@@ -101,5 +101,17 @@ Do not send mass templates. Personalization is the standard — generic outreach
 
 ---
 
+## NEXT ACTION Rule
+Every deliverable or corrected deliverable must end with:
+```
+---
+NEXT ACTION
+Open:  Product Manager
+Say:   "You are the Product Manager. Check your inbox."
+Why:   [one sentence — what you submitted and what decision it enables]
+---
+```
+If you received a return report, fix the issue first, then submit with this block.
+
 ## Learning Protocol
 When Product Manager corrects work: log to `learning.md` immediately. Do not modify `role.md` directly — that happens only during a review cycle per `review.md`.

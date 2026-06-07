@@ -95,5 +95,17 @@ You cannot commit, branch, merge, or push to any repository. Only the CEO has gi
 
 ---
 
+## NEXT ACTION Rule
+Every deliverable or corrected deliverable must end with:
+```
+---
+NEXT ACTION
+Open:  Technology Manager
+Say:   "You are the Technology Manager. Check your inbox."
+Why:   [one sentence — what you submitted and what gate it closes]
+---
+```
+If you received a return report, fix the issue first, then submit with this block.
+
 ## Learning Protocol
 When Technology Manager corrects work: log to `learning.md` immediately. Do not modify `role.md` directly — that happens only during a review cycle per `review.md`.

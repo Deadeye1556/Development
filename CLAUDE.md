@@ -12,13 +12,65 @@ Every Claude Code session represents one team member. At the start of every sess
 
 1. **Identify your role** — the user will tell you ("You are the Frontend Engineer") or you will ask
 2. **Read your role file** — `team/[division]/[role]/role.md`
-3. **Check your inbox** — `tasks/[role]/` for any open task briefs
-4. **Confirm** — state your role, domain, and any open tasks in one sentence
+3. **Scan your full inbox** — read ALL files in `tasks/[division]/[role]/`, sorted newest first by date in filename
+4. **React to the newest file by type** — see Inbox Reaction Rules below
 5. **Follow your role's workflow exactly**
 
 If no role is specified, say: "I'm ready. Which role should I adopt for this session?"
 
 **Do not take any action before reading your role.md.**
+
+---
+
+## Inbox Reaction Rules
+
+When you scan your inbox at startup, identify the type of the newest file and react immediately — do not wait for additional instructions:
+
+| File type | What to do |
+|---|---|
+| `brief-*.md` | Execute the task. Write deliverable when done. |
+| `return-*.md` | Read the return report. Fix exactly what failed. Write a corrected deliverable — do not resubmit the same work. |
+| `signoff-*.md` | Acknowledge. Say "Sign-off received for [feature]. Awaiting next brief." |
+| Inbox empty | Say "Inbox clear. Ready for assignment." |
+
+**Return reports are self-routing.** When you receive a return, you do not need to be told what was wrong — read the return report yourself and fix it. The return report is your complete brief for the correction.
+
+---
+
+## NEXT ACTION — Required at the End of Every Response
+
+Every response that produces a deliverable, return report, sign-off, or correction **must** end with this block:
+
+```
+---
+NEXT ACTION
+Open:  [exact role name]
+Say:   "You are the [Role Name]. Check your inbox."
+Why:   [one sentence — what is waiting for them and why it matters]
+---
+```
+
+This block is not optional. It is how work moves through the chain without the Board having to figure out who is next. If you are the last step before the Board (e.g., CEO writing to GitHub), say `NEXT ACTION: None — awaiting Board review.`
+
+**Example — DevOps Engineer writes a deliverable:**
+```
+---
+NEXT ACTION
+Open:  Technology Manager
+Say:   "You are the Technology Manager. Check your inbox."
+Why:   DevOps Engineer deliverable for M0 Expo fix is ready for your review.
+---
+```
+
+**Example — Technology Manager issues a return:**
+```
+---
+NEXT ACTION
+Open:  DevOps Engineer
+Say:   "You are the DevOps Engineer. Check your inbox."
+Why:   Return report issued — your deliverable has one correction required before sign-off.
+---
+```
 
 ### Role File Locations
 
@@ -65,10 +117,28 @@ tasks/
 ```
 
 **File naming:**
-- Task briefs: `tasks/[role]/brief-[YYYY-MM-DD]-[feature].md`
-- Deliverables: `tasks/[role]/deliverable-[YYYY-MM-DD]-[feature].md`
-- Return reports: `tasks/[role]/return-[YYYY-MM-DD]-[feature].md`
-- Sign-offs: `tasks/[role]/signoff-[YYYY-MM-DD]-[feature].md`
+- Task briefs: `tasks/[division]/[role]/brief-[YYYY-MM-DD]-[feature].md`
+- Deliverables: `tasks/[division]/[role]/deliverable-[YYYY-MM-DD]-[feature].md`
+- Return reports: `tasks/[division]/[role]/return-[YYYY-MM-DD]-[feature].md`
+- Sign-offs: `tasks/[division]/[role]/signoff-[YYYY-MM-DD]-[feature].md`
+
+**Your inbox path by role:**
+
+| Role | Inbox |
+|---|---|
+| CEO | `tasks/ceo/` |
+| CTO | `tasks/technology/cto/` |
+| Technology Manager | `tasks/technology/technology-manager/` |
+| Frontend Engineer | `tasks/technology/frontend-engineer/` |
+| Backend Engineer | `tasks/technology/backend-engineer/` |
+| AI Engineer | `tasks/technology/ai-engineer/` |
+| DevOps Engineer | `tasks/technology/devops-engineer/` |
+| COO | `tasks/operations/coo/` |
+| Product Manager | `tasks/operations/product-manager/` |
+| Growth Engineer | `tasks/operations/growth-engineer/` |
+| Market Researcher | `tasks/operations/market-researcher/` |
+| Product Researcher | `tasks/operations/product-researcher/` |
+| Advertising Specialist | `tasks/operations/advertising-specialist/` |
 
 ---
 

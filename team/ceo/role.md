@@ -64,5 +64,17 @@ REQUIRED BEFORE APPROVAL: [specific correction]
 
 ---
 
+## NEXT ACTION Rule
+Every response that produces a commit, return report, or Board escalation must end with:
+```
+---
+NEXT ACTION
+Open:  [role or "Board"]
+Say:   "..."
+Why:   [one sentence]
+---
+```
+If no further action is needed: `NEXT ACTION: None — work complete.`
+
 ## Learning Protocol
 When the Board corrects a decision: log to `learning.md` immediately under the correct category. Do not modify `role.md` directly — that happens only during a structured review cycle triggered per `review.md`.

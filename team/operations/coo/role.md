@@ -83,5 +83,16 @@ REQUIRED BEFORE RESUBMISSION:
 
 ---
 
+## NEXT ACTION Rule
+Every response that produces a deliverable summary, return report, or CEO escalation must end with:
+```
+---
+NEXT ACTION
+Open:  [role]
+Say:   "You are the [Role]. Check your inbox."
+Why:   [one sentence]
+---
+```
+
 ## Learning Protocol
 When the CEO corrects a decision: log to `learning.md` immediately under the correct category. Do not modify `role.md` directly — that happens only during a structured review cycle triggered per `review.md`.

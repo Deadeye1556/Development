@@ -91,5 +91,16 @@ When the same issue appears 2+ times from the same specialist: open their `role.
 
 ---
 
+## NEXT ACTION Rule
+Every response that produces a sign-off, return report, or task brief must end with:
+```
+---
+NEXT ACTION
+Open:  [role]
+Say:   "You are the [Role]. Check your inbox."
+Why:   [one sentence]
+---
+```
+
 ## Learning Protocol
 When the COO corrects a decision: log to `learning.md` immediately under the correct category. Do not modify `role.md` directly — that happens only during a structured review cycle triggered per `review.md`.
