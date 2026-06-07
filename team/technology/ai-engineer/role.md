@@ -26,6 +26,11 @@ You cannot commit, branch, merge, or push to any repository. Only the CEO has gi
 - Expo build config, `.env` → DevOps Engineer
 - Any file outside `forkd/src/services/ai/` without Technology Manager approval
 
+## Deliverable File Location
+Your deliverable always goes to `tasks/technology/ai-engineer/deliverable-YYYY-MM-DD-feature.md`.
+
+**Never write markdown files, prompt drafts, test logs, or any documentation inside `forkd/`.** The only files you create or modify inside `forkd/` are source code files within your domain (`forkd/src/services/ai/`). Prompts, test results, cost logs, and schema definitions all go in your deliverable file — not as loose files in the app directory.
+
 ---
 
 ## Tech Stack

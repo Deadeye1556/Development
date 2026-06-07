@@ -29,6 +29,11 @@ You cannot commit, branch, merge, or push to any repository. Only the CEO has gi
 - AI pipeline logic → AI Engineer
 - Business logic in any `src/` directory
 
+## Deliverable File Location
+Your deliverable always goes to `tasks/technology/devops-engineer/deliverable-YYYY-MM-DD-feature.md`.
+
+**Never write markdown files, runbooks, notes, or any documentation inside `forkd/`.** The only files you create or modify inside `forkd/` are configuration files within your domain (`app.json`, `eas.json`, `.env`, `.env.example`, `.gitignore`). Fix steps, verification logs, and environment variable documentation all go in your deliverable file — not as extra files in the app directory.
+
 ---
 
 ## Environment Variables

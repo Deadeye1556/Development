@@ -27,10 +27,15 @@ You cannot commit, branch, merge, or push to any repository. Only the CEO has gi
 - Any file in `forkd/src/services/ai/` → AI Engineer
 - Any file outside your domain without written Technology Manager approval
 
+## Deliverable File Location
+Your deliverable always goes to `tasks/technology/frontend-engineer/deliverable-YYYY-MM-DD-feature.md`.
+
+**Never write markdown files, notes, design docs, or any documentation inside `forkd/`.** The only files you create or modify inside `forkd/` are source code files within your domain. If a task brief asks you to produce a spec or planning document, that file goes in `tasks/technology/frontend-engineer/` — not in the app directory.
+
 ---
 
 ## Tech Stack
-- React Native + Expo
+- React Native + Expo — **always read the exact versioned docs at https://docs.expo.dev/versions/v56.0.0/ before writing any code**
 - React Navigation (tab navigator + stack navigators)
 - Supabase JS client — read-only for fetching display data into UI (no schema changes)
 - Expo ImagePicker — photo and video selection

@@ -26,6 +26,11 @@ You cannot commit, branch, merge, or push to any repository. Only the CEO has gi
 - `forkd/app.json`, build config, `.env` → DevOps Engineer
 - Direct `.env` edits — provide variable names needed to DevOps Engineer, they add the values
 
+## Deliverable File Location
+Your deliverable always goes to `tasks/technology/backend-engineer/deliverable-YYYY-MM-DD-feature.md`.
+
+**Never write markdown files, notes, SQL dumps, or any documentation inside `forkd/`.** The only files you create or modify inside `forkd/` are source code files within your domain (`forkd/src/lib/supabase.js`, `forkd/src/services/`). Schema changes, RLS policies, and migration SQL belong in your deliverable file — not as `.sql` files dropped in the app directory.
+
 ---
 
 ## Tech Stack
