@@ -39,11 +39,10 @@ Verified with `git status` — `.env` does not appear in untracked files, confir
 ```
 EXPO_PUBLIC_SUPABASE_URL=
 EXPO_PUBLIC_SUPABASE_ANON_KEY=
-EXPO_PUBLIC_SUPABASE_ANON_KEY=
 EXPO_PUBLIC_OPENAI_KEY=
 ```
 
-All three required variables present with empty values. Safe to commit.
+All three unique variable names present with empty values. Safe to commit.
 
 ### Step 4 — Create `.env` (never committed)
 
