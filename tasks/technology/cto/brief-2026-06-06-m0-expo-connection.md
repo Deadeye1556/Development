@@ -2,7 +2,8 @@
 
 **MILESTONE:** M0 — Foundation  
 **TASK:** Resolve Expo Go connection failure blocking M0 gate  
-**PRIORITY:** Blocking — no M0 gate can close until this is resolved
+**PRIORITY:** P1 — Critical / Blocking. Nothing else in the technology division moves until this gate closes.  
+**DUE:** Immediately — this is the only item blocking M0
 
 ## Background
 

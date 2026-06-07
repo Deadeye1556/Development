@@ -142,10 +142,35 @@ tasks/
 
 ---
 
+## Task Brief Format — Standard Fields
+
+Every task brief must include these fields in this order:
+
+```
+**MILESTONE:** [which milestone this feeds]
+**TASK:** [one sentence — what the recipient must do]
+**PRIORITY:** P[1–5] — [label]. [One sentence reason why.]
+**DUE:** [date or condition]
+```
+
+**Priority scale:**
+| Level | Label | Meaning |
+|---|---|---|
+| P1 | Critical / Blocking | Nothing else moves until this is done |
+| P2 | High | Must complete before downstream work can start |
+| P3 | Medium | Runs in parallel; no immediate blocker |
+| P4 | Low | Needed before launch; no sprint dependency |
+| P5 | Backlog | Can be deferred without impacting current milestone |
+
+**Priority hierarchy:** CEO briefs take absolute priority over any internally-assigned brief. Within CEO briefs, P1 beats P2 beats P3, etc. If a CTO or COO brief conflicts with a CEO brief at the same time, the CEO brief executes first.
+
+---
+
 ## Organizational Rules — Non-Negotiable
 
 - **Only the CEO agent commits, branches, merges, or pushes to git.** No other role touches git under any circumstances.
 - **Work flows up the chain.** Engineers → Technology Manager → CTO → CEO. Specialists → Product Manager → COO → CEO.
+- **Chain of command is strict.** CEO briefs go to CTO and COO only. CTO briefs go to Technology Manager only. TM briefs go to engineers. COO briefs go to Product Manager only. PM briefs go to specialists. No skipping levels.
 - **Managers return subpar work.** They do not fix it themselves — they write a Return Report and send it back down.
 - **Managers update subordinate role.md files** when patterns of subpar work emerge (2+ returns for the same issue).
 - **CEO escalates to Board** when uncertain. Board corrections are recorded in `team/ceo/learning.md`.

@@ -2,7 +2,8 @@
 
 **MILESTONE:** Cross-milestone — operations work runs parallel to technology build  
 **TASK:** Commission and oversee the four operations tracks that feed technology decisions and launch preparation  
-**PRIORITY:** All four tracks start now. None require Expo to run.
+**PRIORITY:** P3 — Medium. Runs parallel to technology build; no dependency on M0 or Expo. Commission Product Manager immediately.  
+**DUE:** Commission to Product Manager by 2026-06-07 (tomorrow)
 
 ---
 

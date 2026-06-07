@@ -2,7 +2,8 @@
 
 **MILESTONE:** M1 — Authentication & User Profiles  
 **TASK:** Architecture review and standards lock before engineers write a single line of M1 code  
-**PRIORITY:** High — M1 engineers cannot start until CTO has approved the architecture
+**PRIORITY:** P2 — High. Begin immediately after M0 gate closes. Engineers cannot start M1 until this is delivered.  
+**DUE:** 2026-06-08 — 2 days after M0 closes
 
 ---
 
