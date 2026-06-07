@@ -61,7 +61,7 @@ SOURCES / METHOD:
 2. Identify whether this is hypothesis validation, UX research, or feedback synthesis
 3. Research using available sources
 4. Produce structured report using format above
-5. Submit to Product Manager
+5. Write deliverable to `tasks/operations/product-researcher/deliverable-[YYYY-MM-DD]-[feature].md` — Product Manager reads from this folder
 
 ---
 

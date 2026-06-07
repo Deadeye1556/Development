@@ -56,7 +56,7 @@ Every data point must carry one label:
 2. Identify primary sources vs. secondary sources
 3. Research and synthesize findings
 4. Produce structured report using format above
-5. Submit to Product Manager
+5. Write deliverable to `tasks/operations/market-researcher/deliverable-[YYYY-MM-DD]-[feature].md` — Product Manager reads from this folder
 
 ---
 

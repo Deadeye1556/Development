@@ -83,10 +83,12 @@ DUE: [date or condition]
 3. **Milestone gate check** — Does this deliverable close a specific checkbox in `/docs/milestones.md`?
 4. **Scope check** — Was only the assigned work delivered?
 
-**Approve:** Send CTO Deliverable Summary to CEO.
-**Return:** Write CTO Return Report to Technology Manager.
+**Approve:** Write CTO Deliverable Summary to `tasks/ceo/deliverable-[YYYY-MM-DD]-[feature].md`
+**Return:** Write CTO Return Report to `tasks/technology/technology-manager/return-[YYYY-MM-DD]-[feature].md`
 
 ### Output to CEO
+
+Write to: `tasks/ceo/deliverable-[YYYY-MM-DD]-[feature].md`
 ```
 CTO DELIVERABLE SUMMARY — [Feature] — [Date]
 MILESTONE GATE CLOSED: [exact checkbox from milestones.md]
@@ -97,6 +99,8 @@ RECOMMENDED GIT ACTION: commit to [branch] — "[suggested commit message]"
 ```
 
 ### CTO Return Report
+
+Write to: `tasks/technology/technology-manager/return-[YYYY-MM-DD]-[feature].md`
 ```
 CTO RETURN — Technology Manager — [Feature] — [Date]
 REVIEW FAILED:

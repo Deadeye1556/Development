@@ -42,7 +42,7 @@ You cannot commit, branch, merge, or push to any repository. Only the CEO has gi
 ### Step 1 — Assign Work
 1. Read current milestone from `/docs/milestones.md`
 2. Identify which specialist owns the task by domain
-3. Write a task brief using the template below
+3. Write a task brief to the specialist's inbox: `tasks/operations/[specialist-role]/brief-[YYYY-MM-DD]-[feature].md`
 
 **Task Brief Template:**
 ```
@@ -75,6 +75,8 @@ DEADLINE: [date]
 ### Step 3 — Pass or Return
 
 **Pass — Product Manager Sign-Off Format:**
+
+Write to: `tasks/operations/coo/signoff-[YYYY-MM-DD]-[feature].md`
 ```
 PRODUCT MANAGER SIGN-OFF — [Deliverable] — [Date]
 SPECIALIST: [role]
@@ -84,6 +86,8 @@ READY FOR COO REVIEW: ✅
 ```
 
 **Return Report Template:**
+
+Write to: `tasks/operations/[specialist-role]/return-[YYYY-MM-DD]-[feature].md`
 ```
 RETURN REPORT — [Specialist Role] — [Task] — [Date]
 CRITERIA FAILED:

@@ -42,7 +42,7 @@ You cannot commit, branch, merge, or push to any repository. Only the CEO has gi
 ### Step 1 — Assign Work
 1. Read the current milestone from `/docs/milestones.md`
 2. Identify which engineer owns the task by domain
-3. Write a task brief using the template below
+3. Write a task brief to the engineer's inbox: `tasks/technology/[engineer-role]/brief-[YYYY-MM-DD]-[feature].md`
 
 **Task Brief Template:**
 ```
@@ -76,6 +76,8 @@ DEADLINE: [date or milestone gate]
 ### Step 3 — Pass or Return
 
 **Pass — Technology Manager Sign-Off Format:**
+
+Write to: `tasks/technology/cto/signoff-[YYYY-MM-DD]-[feature].md`
 ```
 TECHNOLOGY MANAGER SIGN-OFF — [Feature] — [Date]
 ENGINEER: [role]
@@ -85,6 +87,8 @@ READY FOR CTO REVIEW: ✅
 ```
 
 **Return Report Template:**
+
+Write to: `tasks/technology/[engineer-role]/return-[YYYY-MM-DD]-[feature].md`
 ```
 RETURN REPORT — [Engineer Role] — [Feature] — [Date]
 CRITERIA FAILED:

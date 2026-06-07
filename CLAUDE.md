@@ -95,25 +95,42 @@ Why:   Return report issued — your deliverable has one correction required bef
 
 ## How Work Flows Between Sessions
 
-All task briefs and deliverables are written to `tasks/`. This is the communication layer between sessions — each agent writes to their own inbox folder, and their superior reads from it.
+All task briefs and deliverables are written to `tasks/`. This is the communication layer between sessions.
+
+### Downward chain — briefs flow from superior to subordinate inbox
 
 ```
-tasks/
-  ceo/                   CEO inbox — receives deliverables from CTO and COO
-  technology/
-    cto/                 CTO inbox — receives sign-offs from Technology Manager
-    technology-manager/  TM inbox — receives submitted work from engineers
-    frontend-engineer/   Engineer inboxes — receive task briefs from TM
-    backend-engineer/
-    ai-engineer/
-    devops-engineer/
-  operations/
-    coo/                 COO inbox — receives sign-offs from Product Manager
-    product-manager/     PM inbox — receives submitted work from specialists
-    growth-engineer/     Specialist inboxes — receive task briefs from PM
-    market-researcher/
-    product-researcher/
-    advertising-specialist/
+CEO  →  tasks/technology/cto/brief-*.md           (CTO reads this)
+CTO  →  tasks/technology/technology-manager/brief-*.md   (TM reads this)
+TM   →  tasks/technology/[engineer]/brief-*.md    (Engineer reads this)
+
+CEO  →  tasks/operations/coo/brief-*.md           (COO reads this)
+COO  →  tasks/operations/product-manager/brief-*.md      (PM reads this)
+PM   →  tasks/operations/[specialist]/brief-*.md  (Specialist reads this)
+```
+
+### Upward chain — work flows from subordinate to superior inbox
+
+```
+Engineer   →  tasks/technology/[engineer]/deliverable-*.md     (TM reads from engineer folder)
+TM         →  tasks/technology/cto/signoff-*.md                (CTO reads this)
+CTO        →  tasks/ceo/deliverable-*.md                       (CEO reads this)
+
+Specialist →  tasks/operations/[specialist]/deliverable-*.md   (PM reads from specialist folder)
+PM         →  tasks/operations/coo/signoff-*.md                (COO reads this)
+COO        →  tasks/ceo/deliverable-*.md                       (CEO reads this)
+```
+
+### Return chain — rejected work goes back one level
+
+```
+TM   →  tasks/technology/[engineer]/return-*.md    (Engineer fixes and resubmits deliverable)
+CTO  →  tasks/technology/technology-manager/return-*.md  (TM fixes sign-off and resubmits)
+CEO  →  tasks/technology/cto/return-*.md           (CTO fixes deliverable and resubmits)
+
+PM   →  tasks/operations/[specialist]/return-*.md  (Specialist fixes and resubmits)
+COO  →  tasks/operations/product-manager/return-*.md     (PM fixes sign-off and resubmits)
+CEO  →  tasks/operations/coo/return-*.md           (COO fixes deliverable and resubmits)
 ```
 
 **File naming:**

@@ -82,10 +82,12 @@ DUE: [date or condition]
 3. **Milestone gate check** — Does this close a specific deliverable in `/docs/milestones.md`?
 4. **Strategic fit** — Does this move us toward the November 16, 2026 launch?
 
-**Approve:** Send COO Deliverable Summary to CEO.
-**Return:** Write COO Return Report to Product Manager.
+**Approve:** Write COO Deliverable Summary to `tasks/ceo/deliverable-[YYYY-MM-DD]-[feature].md`
+**Return:** Write COO Return Report to `tasks/operations/product-manager/return-[YYYY-MM-DD]-[feature].md`
 
 ### Output to CEO
+
+Write to: `tasks/ceo/deliverable-[YYYY-MM-DD]-[feature].md`
 ```
 COO DELIVERABLE SUMMARY — [Deliverable Name] — [Date]
 MILESTONE GATE: [exact item this closes]
@@ -96,6 +98,8 @@ RECOMMENDED ACTION: [what CEO should do with this]
 ```
 
 ### COO Return Report
+
+Write to: `tasks/operations/product-manager/return-[YYYY-MM-DD]-[feature].md`
 ```
 COO RETURN — Product Manager — [Deliverable] — [Date]
 REVIEW FAILED:

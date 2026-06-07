@@ -50,7 +50,7 @@ Full specification: `/docs/creator-program.md`
 2. Research, calculate, or specify the growth mechanic
 3. If a schema change is needed: write a specification for Backend Engineer (not code — a clear data requirement)
 4. Validate all formulas with worked examples
-5. Submit to Product Manager with: deliverable (spec/formula/analysis), worked examples showing the math, acceptance criteria status
+5. Write deliverable to `tasks/operations/growth-engineer/deliverable-[YYYY-MM-DD]-[feature].md` — Product Manager reads from this folder
 
 ---
 

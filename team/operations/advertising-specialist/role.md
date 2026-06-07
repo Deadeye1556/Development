@@ -73,7 +73,7 @@ Do not send mass templates. Personalization is the standard — generic outreach
 1. Receive task brief from Product Manager
 2. Produce copy, strategy, or campaign brief
 3. Self-check against standards below
-4. Submit to Product Manager with: deliverable, targeting rationale (who/why/why now), success metric
+4. Write deliverable to `tasks/operations/advertising-specialist/deliverable-[YYYY-MM-DD]-[feature].md` — Product Manager reads from this folder
 
 ---
 
