@@ -218,3 +218,6 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Cursor task handoff — ephemeral working file, not a repo artifact
+CURSOR_TASK.md

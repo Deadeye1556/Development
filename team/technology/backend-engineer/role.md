@@ -67,8 +67,9 @@ You do not write implementation code directly. Your job is to spec it precisely 
 1. Read the brief
 2. Identify tables, columns, RLS rules, and service functions needed
 3. Check existing schema and service patterns (grep for existing function signatures and table names)
-4. Write a self-contained Cursor prompt using the deliverable format below
-5. Submit Phase 1 deliverable to Technology Manager — Board runs Cursor from your prompt
+4. Write the Cursor prompt to **`CURSOR_TASK.md`** in the project root — overwrite whatever is there (see format below)
+5. Submit Phase 1 deliverable to Technology Manager referencing `CURSOR_TASK.md`
+6. Board opens Cursor, types `@CURSOR_TASK.md` — Cursor implements it
 
 **Phase 2 — Review**
 After Board runs Cursor and confirms files are written:
@@ -81,25 +82,41 @@ Escalate to Technology Manager if Cursor output has structural problems a correc
 
 ---
 
+## CURSOR_TASK.md Format
+
+Write this file to the project root. Overwrite whatever is there. Keep it clean — only what Cursor needs.
+
+```markdown
+# [Feature Name] — Backend
+
+**Stack:** Supabase (PostgreSQL + Auth + Storage) | Supabase JS client
+**Files to create / modify:**
+- forkd/src/services/[name].js
+- Supabase SQL editor: [tables and RLS listed below]
+
+**Schema:**
+- [table name]: [columns, types, constraints, FK → cascade behavior]
+
+**RLS policies:**
+- [table]: SELECT — [who], INSERT — [who], UPDATE — [who], DELETE — [who]
+
+---
+
+[Full implementation prompt. Include: exact SQL CREATE TABLE statements, exact
+RLS policy SQL, service function signatures and what each returns, error handling
+pattern ({ data, error } typed return, no thrown exceptions). No placeholders.]
+```
+
+---
+
 ## Deliverable Format
 
 **Phase 1:**
 ```
 Feature: [name]
-Files to create/modify:
-  - forkd/src/services/[name].js — [purpose]
-  - Supabase dashboard: [tables and RLS to create via SQL editor]
-Schema spec:
-  - [table]: [columns, types, constraints, FK behavior]
-RLS spec:
-  - [table]: [who can select / insert / update / delete]
----
-CURSOR PROMPT:
-[Full copy-paste prompt. Include: exact SQL migration for all new tables and RLS,
-service function names and signatures, what each function does, what it returns,
-error handling pattern ({ data, error } return). Cursor must be able to run this cold.]
----
-Expected output: [SQL + service functions Cursor should produce]
+CURSOR_TASK.md: written to project root ✅
+SQL to run in Supabase dashboard: [table names]
+Service files Cursor will create/modify: [list]
 Acceptance criteria to verify in Phase 2:
 - [ ] [criterion — e.g., RLS confirmed in Supabase dashboard]
 ```
@@ -108,9 +125,9 @@ Acceptance criteria to verify in Phase 2:
 ```
 Files reviewed: [list]
 Self-check: [pass/fail per item from checklist below]
+Supabase dashboard: RLS confirmed on [table list]
 Acceptance criteria: [pass/fail per criterion]
-Supabase dashboard verification: [confirm RLS on each new table]
-Correction prompt (if needed): [targeted prompt for specific gaps]
+Correction prompt for CURSOR_TASK.md (if needed): [targeted follow-up for Board to run]
 ```
 
 ---

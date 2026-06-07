@@ -51,8 +51,9 @@ You do not write implementation code directly. Your job is to spec it precisely 
 1. Read the brief
 2. Identify files to create or modify — confirm all are within your domain
 3. Grep/glob for existing patterns (imports, navigation structure, theme usage) — avoid reading full files unnecessarily
-4. Write a self-contained Cursor prompt using the deliverable format below
-5. Submit Phase 1 deliverable to Technology Manager — Board runs Cursor from your prompt
+4. Write the Cursor prompt to **`CURSOR_TASK.md`** in the project root — overwrite whatever is there (see format below)
+5. Submit Phase 1 deliverable to Technology Manager referencing `CURSOR_TASK.md`
+6. Board opens Cursor, types `@CURSOR_TASK.md` — Cursor implements it
 
 **Phase 2 — Review**
 After Board runs Cursor and confirms files are written:
@@ -65,25 +66,40 @@ Escalate to Technology Manager if Cursor output has structural problems a correc
 
 ---
 
+## CURSOR_TASK.md Format
+
+Write this file to the project root. Overwrite whatever is there. Keep it clean — only what Cursor needs.
+
+```markdown
+# [Feature Name] — Frontend
+
+**Stack:** React Native + Expo SDK 56 | React Navigation v7 | Supabase JS
+**Files to create / modify:**
+- forkd/src/screens/[Name].js
+- [any other files]
+
+**Patterns to follow:**
+- Theme: import colors, spacing, typography from '../styles/theme'
+- Auth: import { useAuth } from '../context/AuthContext'
+- Supabase: import { supabase } from '../lib/supabase'
+- [navigation pattern, existing component conventions]
+
+---
+
+[Full implementation prompt. Self-contained. Include: what to build, component
+structure, props, data flow, which Supabase calls to make, loading/empty/error
+states required, navigation behavior, styling constraints. No placeholders.]
+```
+
+---
+
 ## Deliverable Format
 
 **Phase 1:**
 ```
 Feature: [name]
-Files to create/modify:
-  - forkd/src/screens/[Name].js — [purpose]
-Existing patterns Cursor must follow:
-  - Theme: import colors/spacing/typography from '../styles/theme'
-  - Auth: import { useAuth } from '../context/AuthContext'
-  - Supabase: import { supabase } from '../lib/supabase'
-  - [any navigation or component pattern relevant to this screen]
----
-CURSOR PROMPT:
-[Full copy-paste prompt. Self-contained. Include: what to build, component structure,
-props, data flow, which Supabase calls to make, loading/empty/error states required,
-navigation behavior, and styling constraints. Cursor must be able to run this cold.]
----
-Expected output: [functions/components Cursor should produce]
+CURSOR_TASK.md: written to project root ✅
+Files Cursor will create/modify: [list]
 Acceptance criteria to verify in Phase 2:
 - [ ] [criterion]
 ```
@@ -93,7 +109,7 @@ Acceptance criteria to verify in Phase 2:
 Files reviewed: [list]
 Self-check: [pass/fail per item from checklist below]
 Acceptance criteria: [pass/fail per criterion]
-Correction prompt (if needed): [targeted prompt to fix specific gaps]
+Correction prompt for CURSOR_TASK.md (if needed): [targeted follow-up for Board to run]
 ```
 
 ---

@@ -70,7 +70,7 @@ DevOps tasks are mostly small, targeted config changes (`.env`, `app.json`, `pac
 - Editing `app.json` metadata fields
 - Updating `.gitignore`
 
-**When Cursor is used**, write the prompt to the standard task file (see Deliverable Format below) and submit Phase 1. After Board runs Cursor, review the output and submit Phase 2.
+**When Cursor is used**, write the prompt to **`CURSOR_TASK.md`** in the project root (see format below) and submit Phase 1. Board opens Cursor, types `@CURSOR_TASK.md` — no copy-paste needed. After Board runs Cursor, review the output and submit Phase 2.
 
 ---
 
@@ -88,17 +88,29 @@ Verification:
 Acceptance criteria: [pass/fail per criterion]
 ```
 
-**When Cursor is used (complex config only):**
+**CURSOR_TASK.md format (complex config only):**
+
+Write to project root. Overwrite whatever is there.
+
+```markdown
+# [Feature Name] — DevOps
+
+**Files to create / modify:** [list]
+**Stack context:** [Expo SDK 56 / EAS Build / GitHub Actions — whichever applies]
+
+---
+
+[Full implementation prompt. Self-contained. No placeholders.]
+```
+
+**Deliverable when Cursor is used:**
 ```
 Feature: [name]
-Files to create/modify: [list]
----
-CURSOR PROMPT:
-[Full copy-paste prompt for Cursor. Self-contained.]
----
+CURSOR_TASK.md: written to project root ✅
 Phase 2 — Review:
   Files reviewed: [list]
-  Verification: [npx expo start clean, no secrets committed]
+  npx expo start: [clean / warnings / errors]
+  .env staged: no — confirmed
   Acceptance criteria: [pass/fail]
 ```
 

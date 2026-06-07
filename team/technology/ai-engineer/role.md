@@ -68,8 +68,9 @@ You do not write pipeline code directly. Your job is to spec the prompt engineer
 **Phase 1 — Spec and prompt**
 1. Read the brief
 2. Define the system prompt, output schema, model choice, and fallback chain
-3. Write a self-contained Cursor prompt using the deliverable format below
-4. Submit Phase 1 deliverable to Technology Manager — Board runs Cursor from your prompt
+3. Write the Cursor prompt to **`CURSOR_TASK.md`** in the project root — overwrite whatever is there (see format below)
+4. Submit Phase 1 deliverable to Technology Manager referencing `CURSOR_TASK.md`
+5. Board opens Cursor, types `@CURSOR_TASK.md` — Cursor implements it
 
 **Phase 2 — Review**
 After Board runs Cursor and confirms files are written:
@@ -82,27 +83,47 @@ Escalate to Technology Manager if Cursor output misunderstands the schema or fal
 
 ---
 
+## CURSOR_TASK.md Format
+
+Write this file to the project root. Overwrite whatever is there. Keep it clean — only what Cursor needs.
+
+```markdown
+# [Pipeline Name] — AI Engineer
+
+**Stack:** OpenAI JS SDK (`openai` npm) | Expo React Native
+**File to create / modify:** forkd/src/services/ai/[name].js
+
+**Model:** [gpt-4o / gpt-4o-mini] | max_tokens: [N]
+**Environment variable:** process.env.EXPO_PUBLIC_OPENAI_KEY
+
+**System prompt:**
+[Exact system prompt text]
+
+**Output schema:**
+[Exact JSON schema]
+
+**Fallback chain:** [describe each step]
+
+---
+
+[Full implementation prompt. Include: function signature and export, system prompt
+integration, output schema validation before returning, fallback logic, error
+handling ({ data, error } typed return, no thrown exceptions), no console.log,
+no hardcoded keys. No placeholders.]
+```
+
+---
+
 ## Deliverable Format
 
 **Phase 1:**
 ```
 Feature: [pipeline name]
-Files to create/modify:
-  - forkd/src/services/ai/[name].js — [purpose]
-System prompt: [full system prompt text]
-Output schema: [exact JSON schema]
-Model: [gpt-4o / gpt-4o-mini] | max_tokens: [N]
-Fallback chain: [describe each fallback step]
----
-CURSOR PROMPT:
-[Full copy-paste prompt. Include: exact system prompt, output schema, model and token
-settings, fallback logic, environment variable usage (process.env.EXPO_PUBLIC_OPENAI_KEY),
-error handling pattern ({ data, error } typed return, no thrown exceptions), no console.log.]
----
-Expected output: [functions Cursor should produce, signatures]
+CURSOR_TASK.md: written to project root ✅
+File Cursor will create/modify: forkd/src/services/ai/[name].js
 Acceptance criteria to verify in Phase 2:
-- [ ] [e.g., output validates against schema on valid input]
-- [ ] [e.g., fallback triggers on OpenAI failure]
+- [ ] [e.g., returns valid schema on good input]
+- [ ] [e.g., returns { data: null, error } gracefully on failure]
 ```
 
 **Phase 2:**
@@ -112,9 +133,9 @@ Self-check: [pass/fail per item from checklist below]
 Test results:
   Test 1 — [input description]: [pass/fail, schema valid Y/N]
   Test 2 — [input description]: [pass/fail]
-  Test 3 — [failure/edge case]: [pass/fail, graceful degradation confirmed Y/N]
+  Test 3 — [failure/edge case]: [graceful degradation Y/N]
 Acceptance criteria: [pass/fail per criterion]
-Correction prompt (if needed): [targeted prompt for specific gaps]
+Correction prompt for CURSOR_TASK.md (if needed): [targeted follow-up for Board to run]
 ```
 
 ---
