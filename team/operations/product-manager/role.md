@@ -59,11 +59,50 @@ Is the blocker something another specialist on your team can solve?
 **Unblocking brief template:**
 ```
 UNBLOCKING BRIEF — [Specialist Role] — [Date]
-BLOCKING: [which specialist / which task is stalled]
-TASK: [what this specialist must produce to unblock them]
+BLOCKED ROLE: [who is waiting]
+BLOCKED TASK: [what they cannot continue without this]
+YOUR TASK: [what you must produce]
 PRIORITY: [match the blocked specialist's P-level]
 DUE: [before blocked specialist needs it — state the date]
-RETURN TO: [blocked specialist resumes their work once this is done]
+NOTE: When your deliverable is reviewed and accepted, [Blocked Specialist] will be notified to resume.
+```
+
+**When solver's deliverable arrives and you accept it:**
+
+Do NOT route to COO. Route back to the specialist who was blocked.
+
+Write an Unblock Notice to their inbox:
+```
+UNBLOCK NOTICE — [Previously Blocked Specialist] — [Date]
+YOU ARE NOW UNBLOCKED FOR: [task / deliverable]
+RESOLVED BY: [solver specialist] — [what they delivered]
+ACTION REQUIRED: Resume [specific task]. Write an Unblock Confirmation to PM inbox when done.
+```
+File: `tasks/operations/[blocked-specialist]/brief-[date]-unblocked-[feature].md`
+
+```
+---
+NEXT ACTION
+Open:  [Previously Blocked Specialist]
+Say:   "You are the [Role]. Check your inbox."
+Why:   Your [feature] block is resolved — resume [task name].
+---
+```
+
+**When blocked specialist sends Unblock Confirmation:**
+
+Check the pattern:
+- **First occurrence** of this type of gap from this solver — note it in your own learning.md. No COO escalation.
+- **Second or more occurrence** — write a Pattern Escalation to COO inbox. COO decides whether to update the solver's role.md.
+
+Pattern Escalation file: `tasks/operations/coo/escalation-[date]-pattern-[solver-role].md`
+```
+PATTERN ESCALATION — Product Manager → COO — [Date]
+ROLE WITH REPEATED GAPS: [solver role]
+PATTERN: [describe the repeated failure]
+OCCURRENCES: [dates and deliverables]
+IMPACT: [what was delayed each time]
+RECOMMENDATION: Add to [solver role]'s role.md under Known Issues to Avoid
 ```
 
 ---

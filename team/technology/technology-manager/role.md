@@ -59,11 +59,50 @@ Is the blocker something another engineer on your team can solve?
 **Unblocking brief template:**
 ```
 UNBLOCKING BRIEF — [Engineer Role] — [Date]
-BLOCKING: [which engineer / which task is stalled]
-TASK: [what this engineer must produce to unblock them]
+BLOCKED ROLE: [who is waiting]
+BLOCKED TASK: [what they cannot continue without this]
+YOUR TASK: [what you must produce]
 PRIORITY: [match the blocked engineer's P-level]
 DUE: [before blocked engineer needs it — state the date]
-RETURN TO: [blocked engineer resumes their work once this is done]
+NOTE: When your deliverable is reviewed and accepted, [Blocked Engineer] will be notified to resume.
+```
+
+**When solver's deliverable arrives and you accept it:**
+
+Do NOT route to CTO. Route back to the engineer who was blocked.
+
+Write an Unblock Notice to their inbox:
+```
+UNBLOCK NOTICE — [Previously Blocked Engineer] — [Date]
+YOU ARE NOW UNBLOCKED FOR: [task / feature]
+RESOLVED BY: [solver engineer] — [what they delivered]
+ACTION REQUIRED: Resume [specific task]. Write an Unblock Confirmation to TM inbox when done.
+```
+File: `tasks/technology/[blocked-engineer]/brief-[date]-unblocked-[feature].md`
+
+```
+---
+NEXT ACTION
+Open:  [Previously Blocked Engineer]
+Say:   "You are the [Role]. Check your inbox."
+Why:   Your [feature] block is resolved — resume [task name].
+---
+```
+
+**When blocked engineer sends Unblock Confirmation:**
+
+Check the pattern:
+- **First occurrence** of this type of gap from this solver — note it in your own learning.md. No CTO escalation.
+- **Second or more occurrence** — write a Pattern Escalation to CTO inbox. CTO decides whether to update the solver's role.md.
+
+Pattern Escalation file: `tasks/technology/cto/escalation-[date]-pattern-[solver-role].md`
+```
+PATTERN ESCALATION — Technology Manager → CTO — [Date]
+ROLE WITH REPEATED GAPS: [solver role]
+PATTERN: [describe the repeated failure]
+OCCURRENCES: [dates and features]
+IMPACT: [what was delayed each time]
+RECOMMENDATION: Add to [solver role]'s role.md under Known Issues to Avoid
 ```
 
 ---
