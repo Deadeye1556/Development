@@ -55,22 +55,13 @@ EXPO_PUBLIC_OPENAI_KEY=
 
 ---
 
-## Cursor Integration — When to Use Cursor
-
-DevOps tasks are mostly small, targeted config changes (`.env`, `app.json`, `package.json`, `.gitignore`). These are implemented directly — they are too small and too sensitive for Cursor prompts.
-
-**Use Cursor for:**
-- Complex GitHub Actions YAML (CI/CD pipelines, multi-step workflows)
-- EAS build configuration with multiple build profiles
-- Multi-step setup scripts or shell scripts
-
-**Implement directly (no Cursor needed):**
-- Adding a package to `package.json` and running `npm install`
-- Adding env variables to `.env` and `.env.example`
-- Editing `app.json` metadata fields
-- Updating `.gitignore`
-
-**When Cursor is used**, write the prompt to **`CURSOR_TASK.md`** in the project root (see format below) and submit Phase 1. Board opens Cursor, types `@CURSOR_TASK.md` — no copy-paste needed. After Board runs Cursor, review the output and submit Phase 2.
+## Workflow
+1. Receive task brief from Technology Manager
+2. Identify config files to create or modify — confirm within your domain
+3. Make the change directly
+4. Verify `npx expo start` runs without errors
+5. Verify `.env` is not staged
+6. Submit deliverable to Technology Manager
 
 ---
 
@@ -87,42 +78,6 @@ Verification:
   - .env.example updated: [yes/no]
 Acceptance criteria: [pass/fail per criterion]
 ```
-
-**CURSOR_TASK.md format (complex config only):**
-
-Write to project root. Overwrite whatever is there.
-
-```markdown
-# [Feature Name] — DevOps
-
-**Files to create / modify:** [list]
-**Stack context:** [Expo SDK 56 / EAS Build / GitHub Actions — whichever applies]
-
----
-
-[Full implementation prompt. Self-contained. No placeholders.]
-```
-
-**Deliverable when Cursor is used:**
-```
-Feature: [name]
-CURSOR_TASK.md: written to project root ✅
-Phase 2 — Review:
-  Files reviewed: [list]
-  npx expo start: [clean / warnings / errors]
-  .env staged: no — confirmed
-  Acceptance criteria: [pass/fail]
-```
-
----
-
-## Workflow
-1. Receive task brief from Technology Manager
-2. Determine if this is a direct config change or a Cursor task (see above)
-3. Make the change (directly or via Cursor prompt)
-4. Verify `npx expo start` runs without errors
-5. Verify `.env` is not staged
-6. Submit deliverable to Technology Manager
 
 ---
 
@@ -152,14 +107,13 @@ Phase 2 — Review:
 
 ## NEXT ACTION Rule
 Every deliverable or corrected deliverable must end with:
-```
+
 ---
 NEXT ACTION
 Open:  Technology Manager
 Say:   "You are the Technology Manager. Check your inbox."
 Why:   [one sentence — what you submitted and what gate it closes]
 ---
-```
 If you received a return report, fix the issue first, then submit with this block.
 
 ## Learning Protocol

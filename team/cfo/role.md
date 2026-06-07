@@ -45,10 +45,9 @@ You cannot commit, branch, merge, or push to any repository. Only the CEO has gi
 
 **Monthly operating costs at launch:**
 - Claude Code: $20/month
-- Cursor: $20/month
 - OpenAI API: ~$2–5/month (development), scales with usage
 - Supabase: Free tier (scales to ~$25/month at Phase 2)
-- Total burn at launch: ~$45–70/month
+- Total burn at launch: ~$25–50/month
 
 **Revenue model:**
 - Instacart affiliate: ~3% of completed order GMV
