@@ -130,10 +130,10 @@ These decisions are final. Do not revisit without Board approval.
 | File | Purpose |
 |---|---|
 | `CLAUDE.md` | Project-wide context loaded in every Claude Code session |
-| `team/ceo.md` | CEO agent definition and learned decisions |
-| `team/technology/` | CTO, Technology Manager, and all engineers |
-| `team/operations/` | COO, Product Manager, and all specialists |
-| `team/cfo.md` | CFO (inactive, ready for Phase 2) |
+| `company/team/ceo/` | CEO agent definition and learned decisions |
+| `company/team/technology/` | CTO, Technology Manager, and all engineers |
+| `company/team/operations/` | COO, Product Manager, and all specialists |
+| `company/team/cfo/` | CFO (inactive, ready for Phase 2) |
 | `docs/milestones.md` | Full milestone roadmap with acceptance criteria |
 | `docs/architecture.md` | System architecture and data model |
 | `docs/creator-program.md` | Creator tier system full specification |
