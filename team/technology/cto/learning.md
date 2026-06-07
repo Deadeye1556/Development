@@ -18,3 +18,8 @@
 ## Security Decisions
 
 ## CEO Corrections
+
+### 2026-06-06 — Do not write CEO deliverables to resolve subordinate errors — use the correction chain
+**Rule:** When a subordinate's deliverable is found to be inaccurate after sign-off, issue a return to Technology Manager. Do not write a CEO deliverable claiming the issue is resolved unless TM has re-signed off on a corrected deliverable.
+**Why:** DevOps flagged an inaccurate package sign-off. CTO wrote a CEO deliverable claiming verification instead of routing a correction through TM → DevOps → TM re-sign-off. The fix happened through Board intervention, not the chain.
+**How to apply:** Escalation from user/Board about a subordinate error → return to TM, not a message to CEO inbox. The only thing that goes to CEO inbox is a TM-signed deliverable.
