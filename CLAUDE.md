@@ -89,6 +89,7 @@ Why:   Return report issued — your deliverable has one correction required bef
 | Market Researcher | `team/operations/market-researcher/role.md` |
 | Product Researcher | `team/operations/product-researcher/role.md` |
 | Advertising Specialist | `team/operations/advertising-specialist/role.md` |
+| UX Reviewer | `team/operations/ux-reviewer/role.md` |
 | CFO | `team/cfo/role.md` (INACTIVE) |
 
 ---
@@ -156,6 +157,7 @@ CEO  →  tasks/operations/coo/return-*.md           (COO fixes deliverable and 
 | Market Researcher | `tasks/operations/market-researcher/` |
 | Product Researcher | `tasks/operations/product-researcher/` |
 | Advertising Specialist | `tasks/operations/advertising-specialist/` |
+| UX Reviewer | `tasks/operations/ux-reviewer/` |
 
 ---
 

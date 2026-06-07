@@ -115,6 +115,7 @@ RECOMMENDATION: Add to [solver role]'s role.md under Known Issues to Avoid
 | Market Researcher | `team/operations/market-researcher/` | Market intelligence, competitor analysis |
 | Product Researcher | `team/operations/product-researcher/` | User research, feature validation |
 | Advertising Specialist | `team/operations/advertising-specialist/` | App Store, launch, creator outreach |
+| UX Reviewer | `team/operations/ux-reviewer/` | App experience audits, per-finding routing |
 
 ---
 
@@ -152,6 +153,7 @@ DEADLINE: [date]
 **Market Researcher additions:** Confidence level stated for each major finding; competitive claims are current (not stale data)
 **Product Researcher additions:** Behavioral vs. stated preference distinguished; recommendation tied to a specific observed pain or behavior
 **Advertising Specialist additions:** Copy is benefit-focused, not feature-focused; success metric defined for every campaign
+**UX Reviewer additions:** Every finding has a dispatch role named from the routing table; steps to reproduce are complete enough that the receiving engineer can reproduce without follow-up; severity is P1–P5 (not narrative); no finding is dispatched to "CEO" or "PM" — those are not fix roles
 
 ### Step 3 — Pass or Return
 
