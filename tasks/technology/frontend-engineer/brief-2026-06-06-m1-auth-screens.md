@@ -1,45 +1,57 @@
 # TASK BRIEF — Frontend Engineer — 2026-06-06
 
 MILESTONE: M1 — Authentication & User Profiles
-FEATURE: Auth screens, profile screens, and navigation scaffold
-PRIORITY: P1 — Read the navigation architecture section before writing a single line of code.
-DEADLINE: June 22, 2026 — M1 gate target
+PRIORITY: P1 — Critical / Blocking
+FEATURE: M1 navigation scaffold + auth and profile screens — full implementation
+DUE: June 22, 2026
+
+**Reference:** `tasks/operations/product-researcher/deliverable-2026-06-06-auth-onboarding-ux.md`
+Read before writing any navigation code — UX research drives the architecture below.
 
 ---
 
-## ⚠ READ THIS FIRST — Navigation Architecture Constraint
+## PART 1 — NAVIGATION ARCHITECTURE (read before writing any code)
 
-**This cannot be retrofitted.** The navigation layer must be designed for an unauthenticated state from the very first commit.
+The navigation layer must support unauthenticated browsing from the first commit. Users must NOT be required to sign up or log in to browse Discover or view a recipe. Auth is triggered by a social action, not by app launch.
 
-**Required architecture:**
+**CORRECT ARCHITECTURE — two stacks, session-conditional:**
 
-- Two stacks: `AuthStack` (Login/SignUp) and `AppStack` (tab navigator)
-- A listener on `supabase.auth.onAuthStateChange` that switches the active stack based on session state
-- `Discover` tab and `RecipeDetail` screen are accessible **without auth**
-- Social action buttons (Save, Like, Follow, Add to Cart) check auth state — if user is not signed in, redirect to `AuthScreen` rather than blocking access to the content
-- Auth is triggered by a social action, not by app launch
+AppStack (no auth required):
+- DiscoverScreen (default tab for all users including unauthenticated)
+- RecipeDetailScreen (accessible without auth)
+- HomeScreen (empty for unauthenticated users — shows followed creator feed when logged in)
+- UploadScreen (requires auth — redirect to AuthScreen if not signed in)
+- ProfileScreen (requires auth to view own profile — redirect if not signed in)
 
-This is the same amount of work as a standard auth gate — it is just a different shape. Start here.
+AuthStack:
+- OnboardingScreen (3-chip interest selection — first launch only, before Discover loads)
+- AuthScreen (triggered by social action or UploadScreen/ProfileScreen access)
+- SignUpScreen
 
-**Reference:** Product Researcher auth/onboarding UX findings — `tasks/operations/product-researcher/deliverable-2026-06-06-auth-onboarding-ux.md`
+Session listener (`supabase.auth.onAuthStateChange`) switches between stacks. Social action buttons (Save, Like, Follow, Add to Cart) check session state and redirect to AuthScreen if user is not signed in — they do not block the screen from loading.
 
----
+Default tab for new and unauthenticated users: **Discover** (not Home). Home tab shows empty state with prompt to follow creators until social graph exists.
 
-## UX Implementation Guidance
-
-These findings come from Product Researcher UX research approved by COO. They are not optional — apply them as you build:
-
-1. **Default tab is Discover, not Home** — Home feed is empty until the social graph exists. New users must land on Discover.
-2. **3-chip interest selection on first launch** — One screen (`OnboardingScreen`), mandatory before Discover loads for new users. Chips seed personalization and solve the cold-start problem. Simple screen: pick 3 interests from a grid, tap Continue.
-3. **Google OAuth is required** — Research confirms 15–30% higher sign-up completion vs email-only on mobile. `expo-auth-session` is already installed.
+**THIS ARCHITECTURE CANNOT BE ADDED AFTER AuthScreen.js IS BUILT. It must be the starting shape of `navigation/index.js`.**
 
 ---
 
-## What's Already Built — Use These, Don't Rebuild
+## PART 2 — FIRST LAUNCH ONBOARDING (implement before Discover loads)
+
+On first app launch only (check AsyncStorage flag):
+- Show OnboardingScreen before Discover loads
+- Display 3 chip selectors for user interest categories (e.g. Cooking, Homebrewing, Fermentation, Mead, BBQ, Spirits, Cider)
+- Selection is mandatory — user must pick at least 1 before continuing
+- Save selections to AsyncStorage and to profiles row if user is signed in
+- This is one simple screen, not a complex multi-step flow
+
+---
+
+## PART 3 — WHAT'S ALREADY BUILT (use these, do not rebuild)
 
 **Backend Engineer delivered:**
-- `forkd/src/lib/supabase.js` — Supabase client, import and use directly
-- `forkd/src/services/profiles.js` — all 7 service functions ready to call:
+- `forkd/src/lib/supabase.js` — Supabase client, import directly
+- `forkd/src/services/profiles.js` — 7 service functions:
   - `fetchProfile(userId)` → `{ profile, error }`
   - `updateProfile(userId, data)` → `{ success, error }`
   - `followUser(followerId, followingId)` → `{ success, error }`
@@ -49,12 +61,12 @@ These findings come from Product Researcher UX research approved by COO. They ar
   - `fetchFollowing(userId)` → `{ following, error }`
 
 **DevOps Engineer delivered:**
-- `"scheme": "forkd"` in `app.json`
-- Packages installed: `@supabase/supabase-js`, `@react-native-async-storage/async-storage`, `react-native-url-polyfill`, `expo-auth-session`
+- `"scheme": "forkd"` in `app.json` — deep link scheme for OAuth
+- Packages installed: `@supabase/supabase-js`, `@react-native-async-storage/async-storage`, `react-native-url-polyfill`, `expo-auth-session`, `expo-web-browser`, `expo-image-picker`
 
 ---
 
-## Auth Calls — Use Directly From Supabase Client
+## PART 4 — AUTH CALLS (use directly from Supabase client)
 
 ```js
 import { supabase } from '../lib/supabase';
@@ -66,97 +78,122 @@ supabase.auth.getSession()
 supabase.auth.onAuthStateChange((event, session) => { ... })
 ```
 
-Do not write service functions for auth — call the Supabase client directly from your screens.
+---
+
+## PART 5 — GOOGLE OAUTH (highest risk item)
+
+1. Use `expo-auth-session` + `expo-web-browser` (`WebBrowser.openAuthSessionAsync`)
+2. Coordinate with Backend Engineer on the exact Supabase redirect URI before wiring — verify the URI string character-for-character
+3. Must be tested on a real physical device — simulator result does not count
+4. Do not mark complete until it works on device
+5. Research confirms Google OAuth drives 15–30% higher sign-up completion on mobile — this is required, not optional
 
 ---
 
-## Google OAuth — Highest Risk Item
+## PART 6 — SCREEN SPECS (write before any implementation)
 
-1. Use `expo-auth-session` to initiate the OAuth flow
-2. Coordinate with Backend Engineer on the exact redirect URI before wiring — Backend registered it in the Supabase Auth dashboard
-3. **Must be tested on a real physical device** — simulator result does not count per CTO standard
-4. Do not mark this criterion complete until it works on device
+Before writing implementation code, write a spec for each screen:
+- Components needed
+- Data displayed and source
+- States: loading / empty / error
+- User actions
+
+**Screens to spec (9 total):**
+1. OnboardingScreen (3-chip interest selection — first launch only)
+2. AuthScreen (email/password + Google OAuth — triggered by social action)
+3. SignUpScreen (email, password, display name)
+4. HomeScreen (followed creator feed — empty state with prompt if no follows)
+5. DiscoverScreen (all recipes — default tab, no auth required)
+6. UploadScreen (auth required — redirect if not signed in)
+7. ProfileScreen (own profile: edit button; other profile: follow/unfollow)
+8. EditProfileScreen (avatar, display name, bio)
+9. SettingsScreen (change password, sign out)
+
+Include specs in deliverable. TM reviews before sign-off.
 
 ---
 
-## ACCEPTANCE CRITERIA
+## PART 7 — ACCEPTANCE CRITERIA
 
 **Navigation:**
-- [ ] `AuthStack` and `AppStack` implemented — session listener on `supabase.auth.onAuthStateChange` switches between them
-- [ ] `Discover` tab accessible without authentication
-- [ ] Social action buttons (Save, Like, Follow, Add to Cart) check auth state — redirect unauthenticated users to `AuthScreen`
-- [ ] Unauthenticated users land on Discover; authenticated users land on tab navigator
-- [ ] Session persistence: closing and reopening app keeps user logged in
-- [ ] Tab navigator: Home, Discover, Upload, Profile — 4 tabs, navigable on device
-- [ ] Default tab for new users is Discover (not Home)
+- [ ] Discover tab loads without authentication
+- [ ] RecipeDetail screen accessible without authentication
+- [ ] Social action buttons (Save, Like, Follow) redirect to AuthScreen if not signed in
+- [ ] UploadScreen redirects to AuthScreen if not signed in
+- [ ] Session state change (sign in / sign out) switches stacks without reload
+- [ ] Default tab for new/unauthenticated users is Discover
 
 **Onboarding:**
-- [ ] `OnboardingScreen`: 3-chip interest selection shown to new users before Discover loads
-- [ ] Interest selection is mandatory (cannot skip) and dismisses permanently after first completion
+- [ ] OnboardingScreen shows on first launch only
+- [ ] User must select at least 1 interest chip to proceed
+- [ ] Selection saved to AsyncStorage (and profiles row if signed in)
+- [ ] Does not show on subsequent launches
 
-**Auth:**
-- [ ] `AuthScreen`: email/password sign-up works end-to-end (creates Supabase user + profiles row auto-populates via trigger)
-- [ ] `AuthScreen`: email/password login works end-to-end
-- [ ] `AuthScreen`: Google OAuth button initiates flow via `expo-auth-session`
-- [ ] Google OAuth tested and confirmed working on a real physical device — state the device in your deliverable
+**Auth screens:**
+- [ ] Email/password sign-up creates Supabase user + profiles row auto-populates
+- [ ] Email/password login works end-to-end
+- [ ] Google OAuth initiates via `expo-auth-session` + `expo-web-browser`
+- [ ] Google OAuth confirmed working on a real physical device
+- [ ] Session persists — close and reopen app, user stays logged in
 
-**Profile:**
-- [ ] `ProfileScreen`: displays avatar, display name, bio, follower count, following count
-- [ ] `ProfileScreen`: follow/unfollow button works and persists
-- [ ] `EditProfileScreen`: updates display name, bio, avatar — calls `updateProfile`
-- [ ] `SettingsScreen`: change password and sign out work
+**Profile screens:**
+- [ ] ProfileScreen displays avatar, display name, bio, follower count, following count
+- [ ] Follow/unfollow works and persists
+- [ ] EditProfileScreen updates display name, bio, avatar via `updateProfile`
+- [ ] SettingsScreen: change password and sign out work
 
-**Quality:**
-- [ ] All screens have loading, empty, and error states — no exceptions
-- [ ] No hardcoded credentials, no hardcoded colors
-- [ ] No console.log, no TODOs, no dead code
+**All screens:**
+- [ ] Screen specs written for all 9 screens before implementation begins
+- [ ] Navigation scaffold verified on device before screens are wired
+- [ ] All 9 screens have loading, empty, and error states — no exceptions
+- [ ] No hardcoded credentials, no console.log, no TODOs, no dead code
 
 ---
 
-## FILES TO TOUCH
+## PART 8 — FILES TO TOUCH
 
-- `forkd/src/navigation/index.js` — AuthStack + AppStack with session listener
-- `forkd/src/screens/OnboardingScreen.js` — 3-chip interest selection (new)
-- `forkd/src/screens/AuthScreen.js` (or split: `LoginScreen.js`, `SignUpScreen.js`)
+- `forkd/src/navigation/index.js`
+- `forkd/src/screens/OnboardingScreen.js`
+- `forkd/src/screens/AuthScreen.js` (or `LoginScreen.js` + `SignUpScreen.js`)
+- `forkd/src/screens/HomeScreen.js`
+- `forkd/src/screens/DiscoverScreen.js` (no-auth accessible)
+- `forkd/src/screens/UploadScreen.js` (auth-gated)
 - `forkd/src/screens/ProfileScreen.js`
 - `forkd/src/screens/EditProfileScreen.js`
 - `forkd/src/screens/SettingsScreen.js`
-- `forkd/src/screens/HomeScreen.js` (placeholder)
-- `forkd/src/screens/DiscoverScreen.js` (placeholder — must be accessible without auth)
-- `forkd/src/screens/UploadScreen.js` (placeholder)
-- `forkd/src/components/` (any new components needed)
-- `forkd/src/styles/theme.js` (if theme constants need adding)
+- `forkd/src/components/` (new components as needed)
+- `forkd/src/styles/theme.js` (add constants if needed)
 
-## FILES NOT TO TOUCH
-
-- `forkd/src/lib/supabase.js` → Backend Engineer domain
-- `forkd/src/services/profiles.js` → Backend Engineer domain
-- `forkd/app.json` → DevOps Engineer domain
-- `forkd/.env` or `.env.example` → DevOps Engineer domain
-- `forkd/src/services/ai/` → AI Engineer domain
+**FILES NOT TO TOUCH:**
+- `forkd/src/lib/supabase.js` → Backend Engineer
+- `forkd/src/services/profiles.js` → Backend Engineer
+- `forkd/app.json` → DevOps Engineer
+- `forkd/.env` or `.env.example` → DevOps Engineer
+- `forkd/src/services/ai/` → AI Engineer
 
 ---
 
-## STANDARDS — Enforced on TM Review
+## PART 9 — STANDARDS (enforced by TM on review — no exceptions)
 
-- All auth tokens managed by Supabase SDK — no manual token storage anywhere
-- Every screen must have loading state, empty state, and error state
-- No hardcoded colors — use theme constants from `forkd/src/styles/theme.js`
-- No console.log, no TODOs, no dead code
+- Auth tokens managed by Supabase SDK only — no manual token storage anywhere
+- Every screen: loading state, empty state, error state — all three, no exceptions
+- No hardcoded colors — theme constants from `forkd/src/styles/theme.js` only
+- No console.log, no TODOs, no dead code in any submitted file
 
 ---
 
 ## DELIVERABLE
 
 Write to `tasks/technology/frontend-engineer/deliverable-2026-06-06-m1-auth-screens.md`:
+- Screen specs for all 9 screens
 - Files created/modified
-- How to verify each acceptance criterion
-- Explicit pass/fail per criterion
-- Google OAuth device test confirmation — name the device used
+- Explicit pass/fail per acceptance criterion
+- Google OAuth: state the device make/model used for physical device test
+- Navigation: confirm scaffold rendered on device before screens were wired
 
 ---
 NEXT ACTION
 Open:  Technology Manager
 Say:   "You are the Technology Manager. Check your inbox."
-Why:   Frontend Engineer deliverable for M1 auth screens is ready for your review.
+Why:   Frontend Engineer M1 auth screens deliverable is ready for your review.
 ---
