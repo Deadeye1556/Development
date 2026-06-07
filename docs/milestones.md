@@ -19,17 +19,10 @@ Do not advance to the next milestone until every gate checkbox is checked.
 - [x] Node.js LTS — installed
 - [x] GitHub — Forkd repo created (private)
 - [x] Expo CLI — installed (`npm install -g expo-cli`)
-- [ ] **App shell running on phone via Expo Go** ← BLOCKING
-
-### Blocking Issue
-Windows Firewall blocking port 8081. DevOps Engineer owns this fix.
-```powershell
-New-NetFirewallRule -DisplayName "Expo Dev Server" -Direction Inbound -Protocol TCP -LocalPort 8081 -Action Allow
-```
-Fallback: press `S` in Expo terminal → select Tunnel mode.
+- [x] **App shell running on phone via Expo Go** — confirmed 2026-06-06 via QR scan, Expo Tunnel mode
 
 ### Milestone Gate ✅ (all required)
-- [ ] App shell loads on phone via Expo Go
+- [x] App shell loads on phone via Expo Go
 - [x] Supabase dashboard accessible, keys saved
 - [x] All API keys stored in `.env` file (not committed)
 - [x] GitHub repo has initial commit
@@ -40,14 +33,15 @@ Fallback: press `S` in Expo terminal → select Tunnel mode.
 **Target:** June 22, 2026 | **Est:** 7–14 hrs | **Owners:** Backend Engineer + Frontend Engineer
 
 ### Action Items
-- [ ] Implement email/password sign-up and login (Supabase Auth)
-- [ ] Implement Google OAuth sign-in
-- [ ] Create `profiles` table with RLS
-- [ ] Create `follows` table with RLS
-- [ ] Build user profile screen (avatar, display name, bio, follower/following count)
-- [ ] Build follow/unfollow system
-- [ ] Build settings screen (edit profile, change password)
-- [ ] Build tab navigation (Home, Search, Upload, Profile)
+- [x] Implement email/password sign-up and login (Supabase Auth)
+- [x] Implement Google OAuth sign-in — code complete; redirect URI registration pending Board action
+- [x] Create `profiles` table with RLS
+- [x] Create `follows` table with RLS
+- [x] Build user profile screen (avatar, display name, bio, follower/following count)
+- [x] Build follow/unfollow system
+- [x] Build settings screen (edit profile, change password)
+- [x] Build tab navigation (Home, Search, Upload, Profile)
+- [ ] Supabase Storage `avatars` bucket — Backend Engineer brief in flight
 
 ### Prompt for Cursor/Claude Code
 > "Using React Native with Expo and Supabase, build a complete authentication flow including email/password signup, Google OAuth, user profile creation with avatar/bio/follower count display, and a follow/unfollow system. Use Supabase Auth. Create the `profiles` and `follows` tables with RLS policies. Add a 4-tab navigator: Home, Search, Upload, Profile."
@@ -56,8 +50,8 @@ Fallback: press `S` in Expo terminal → select Tunnel mode.
 - [ ] New user can sign up, log in, and log out
 - [ ] Profile screen shows avatar, name, and bio
 - [ ] Two test accounts can follow each other
-- [ ] Tab navigation works on iOS and Android
-- [ ] All Supabase tables have RLS enabled
+- [x] Tab navigation works on iOS and Android — confirmed on physical device 2026-06-06
+- [x] All Supabase tables have RLS enabled
 
 ---
 
