@@ -34,7 +34,7 @@ Do not advance to the next milestone until every gate checkbox is checked.
 
 ### Action Items
 - [x] Implement email/password sign-up and login (Supabase Auth)
-- [x] Implement Google OAuth sign-in — code complete; redirect URI registration pending Board action
+- [x] Implement Google OAuth sign-in — code complete; `forkd://` redirect URI registered in Supabase Auth dashboard 2026-06-06
 - [x] Create `profiles` table with RLS
 - [x] Create `follows` table with RLS
 - [x] Build user profile screen (avatar, display name, bio, follower/following count)
