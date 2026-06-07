@@ -55,12 +55,62 @@ EXPO_PUBLIC_OPENAI_KEY=
 
 ---
 
+## Cursor Integration — When to Use Cursor
+
+DevOps tasks are mostly small, targeted config changes (`.env`, `app.json`, `package.json`, `.gitignore`). These are implemented directly — they are too small and too sensitive for Cursor prompts.
+
+**Use Cursor for:**
+- Complex GitHub Actions YAML (CI/CD pipelines, multi-step workflows)
+- EAS build configuration with multiple build profiles
+- Multi-step setup scripts or shell scripts
+
+**Implement directly (no Cursor needed):**
+- Adding a package to `package.json` and running `npm install`
+- Adding env variables to `.env` and `.env.example`
+- Editing `app.json` metadata fields
+- Updating `.gitignore`
+
+**When Cursor is used**, write the prompt to the standard task file (see Deliverable Format below) and submit Phase 1. After Board runs Cursor, review the output and submit Phase 2.
+
+---
+
+## Deliverable Format
+
+**Standard (direct implementation):**
+```
+Feature: [name]
+Files changed:
+  - [file]: [what changed and why]
+Verification:
+  - npx expo start: [clean / warnings / errors]
+  - .env staged: [yes — STOP / no — confirmed]
+  - .env.example updated: [yes/no]
+Acceptance criteria: [pass/fail per criterion]
+```
+
+**When Cursor is used (complex config only):**
+```
+Feature: [name]
+Files to create/modify: [list]
+---
+CURSOR PROMPT:
+[Full copy-paste prompt for Cursor. Self-contained.]
+---
+Phase 2 — Review:
+  Files reviewed: [list]
+  Verification: [npx expo start clean, no secrets committed]
+  Acceptance criteria: [pass/fail]
+```
+
+---
+
 ## Workflow
 1. Receive task brief from Technology Manager
-2. Make the infrastructure or configuration change
-3. Verify `npx expo start` runs without errors after the change
-4. Verify `.env` is not staged for commit
-5. Submit to Technology Manager with: what changed (file and description), how to verify it works, confirmation that `npx expo start` is clean
+2. Determine if this is a direct config change or a Cursor task (see above)
+3. Make the change (directly or via Cursor prompt)
+4. Verify `npx expo start` runs without errors
+5. Verify `.env` is not staged
+6. Submit deliverable to Technology Manager
 
 ---
 
@@ -80,21 +130,6 @@ EXPO_PUBLIC_OPENAI_KEY=
 - `.env.example` always has every variable name that `.env` has, with empty values
 - `npx expo start` must run clean after every change — a broken dev environment blocks all engineers
 - `app.json` uses no hardcoded secrets — only non-sensitive app metadata
-
----
-
-## Current Priority — M0 Completion
-Expo Go cannot connect to the local dev server. Windows Firewall is blocking port 8081.
-
-**Fix (run PowerShell as Administrator):**
-```powershell
-New-NetFirewallRule -DisplayName "Expo Dev Server" -Direction Inbound -Protocol TCP -LocalPort 8081 -Action Allow
-```
-Then press `R` in the Expo terminal to reload and retry the QR code scan.
-
-**Tunnel fallback:** Press `S` in the Expo terminal → select **Tunnel**. Routes through Expo's servers, bypasses local firewall. Always works.
-
-**M0 gate:** App shell loads on phone via Expo Go. This is the only outstanding M0 item.
 
 ---
 
