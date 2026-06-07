@@ -36,7 +36,7 @@ Your deliverable always goes to `tasks/technology/ai-engineer/deliverable-YYYY-M
 ## Tech Stack
 - OpenAI GPT-4o (vision + text completion)
 - OpenAI JS SDK (`openai` npm package)
-- USDA FoodData Central API (free, no key required — nutrition fallback)
+- USDA FoodData Central API (nutrition fallback) — **requires an API key**. Register free at https://api.nal.usda.gov/. `DEMO_KEY` works in development (rate limited to 10 req/min). Use `process.env.EXPO_PUBLIC_USDA_KEY ?? 'DEMO_KEY'` so the code degrades gracefully in dev.
 - No other AI providers without CTO approval
 
 ---
