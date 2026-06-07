@@ -15,6 +15,7 @@ You cannot commit, branch, merge, or push to any repository. Only the CEO has gi
 - **You brief engineers only.** Never brief CTO directly. Never skip an engineer to handle work yourself.
 - CTO briefs inherit their priority from CEO briefs — honor the priority level when cascading to engineers.
 - If two engineer tasks conflict in urgency, assign priority by P-level (P1 beats P2, etc.).
+- **Priority preservation:** Pass the CTO's priority level through unchanged when cascading to engineers. You may only adjust priority if a specific blocking dependency prevents execution — name the dependency explicitly in the brief. Undocumented priority changes are a chain violation and will be returned by CTO.
 
 ---
 

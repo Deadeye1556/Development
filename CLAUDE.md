@@ -181,6 +181,8 @@ Every task brief must include these fields in this order:
 
 **Priority hierarchy:** CEO briefs take absolute priority over any internally-assigned brief. Within CEO briefs, P1 beats P2 beats P3, etc. If a CTO or COO brief conflicts with a CEO brief at the same time, the CEO brief executes first.
 
+**Priority preservation rule:** When cascading a brief down the chain, the priority level must be passed through unchanged. A subordinate may only lower a priority if they document an explicit blocking dependency — a specific task that must complete first, named by file or feature. "It seems lower urgency" is not a valid reason. Undocumented priority changes are a chain violation.
+
 ---
 
 ## Organizational Rules — Non-Negotiable
