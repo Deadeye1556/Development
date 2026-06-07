@@ -15,11 +15,9 @@ You can run all live OpenAI tests now. Start a Node.js session from `forkd/` and
 
 **Photo Snap:**
 - "5 test cases run — inputs and outputs shown for each": NOT MET — 0 of 5 tests completed
-- "Actual cost per call measured — all 5 calls under $0.02": NOT MET — no cost data
 
 **Nutrition:**
-- "3 test cases run — inputs, outputs, confidence levels shown": PARTIAL — Test 2 (complex recipe, primary GPT-4o-mini path) not completed
-- "Actual cost per call measured — all 3 calls under $0.005": NOT MET — no cost data
+- "3 test cases run — inputs, outputs, confidence levels shown": PARTIAL — Test 2 (complex recipe, 15+ ingredients, GPT-4o-mini primary path) not completed
 
 ---
 
@@ -49,19 +47,10 @@ This directly contradicts your own deliverable finding. USDA requires a key. Cor
 
 1. Fix dead ternary on line 148 of `nutrition.js`
 2. Fix inaccurate comment on line 144 of `nutrition.js`
-3. Run all 5 photo snap test cases — show prompt sent, raw response, schema pass/fail, token count and cost per call
-4. Run nutrition test 2 (complex recipe, 15+ ingredients) against GPT-4o-mini primary path — show response and cost
-5. Report actual cost per call for all 8 tests (5 photo snap + 3 nutrition)
+3. Run all 5 photo snap test cases — show input description, raw response summary, and schema pass/fail for each
+4. Run nutrition test 2 (complex recipe, 15+ ingredients) against GPT-4o-mini primary path — show response
 
-**How to measure cost:**
-```js
-// After client.chat.completions.create():
-const usage = response.usage;
-// input_tokens * model_rate + output_tokens * model_rate = cost
-// gpt-4o: ~$0.0025/1K input, ~$0.01/1K output (plus vision tokens)
-// gpt-4o-mini: ~$0.00015/1K input, ~$0.0006/1K output
-```
-Log `response.usage` to a local test script only — never in the production pipeline file.
+**Note:** Per Board direction, API cost measurement is not required for beta. Confirm the pipeline calls succeed and return valid structured data — that is sufficient.
 
 ---
 
@@ -78,4 +67,4 @@ Log `response.usage` to a local test script only — never in the production pip
 
 ## RESUBMIT BY: 2026-06-07
 
-Environment is ready. This is a targeted correction — fix 2 lines and run the tests.
+Fix 2 lines, run the remaining tests, confirm end-to-end pipeline works. Cost reporting removed from scope.
