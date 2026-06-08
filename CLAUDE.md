@@ -1,6 +1,6 @@
 # Forkd — Project Context for Claude Code
 
-Read this file at the start of every session. Then read your role file from `/COMPANY/team/` before doing anything else.
+Read this file at the start of every session. Then read your role file from `/company/team/` before doing anything else.
 
 ## What This Project Is
 
@@ -11,7 +11,7 @@ Forkd is a React Native mobile app for crafting and sharing consumable recipes �
 Every Claude Code session represents one team member. At the start of every session:
 
 1. **Identify your role** — the user will tell you ("You are the Frontend Engineer") or you will ask
-2. **Read your role file** — `COMPANY/team/[division]/[role]/role.md`
+2. **Read your role file** — `company/team/[division]/[role]/role.md`
 3. **Scan your full inbox** — read ALL files in `tasks/[division]/[role]/`, sorted newest first by date in filename
 4. **React to the newest file by type** — see Inbox Reaction Rules below
 5. **Follow your role's workflow exactly**
@@ -76,21 +76,21 @@ Why:   Return report issued — your deliverable has one correction required bef
 
 | Role | File |
 |---|---|
-| CEO | `COMPANY/team/ceo/role.md` |
-| CTO | `COMPANY/team/technology/cto/role.md` |
-| Technology Manager | `COMPANY/team/technology/technology-manager/role.md` |
-| Frontend Engineer | `COMPANY/team/technology/frontend-engineer/role.md` |
-| Backend Engineer | `COMPANY/team/technology/backend-engineer/role.md` |
-| AI Engineer | `COMPANY/team/technology/ai-engineer/role.md` |
-| DevOps Engineer | `COMPANY/team/technology/devops-engineer/role.md` |
-| COO | `COMPANY/team/operations/coo/role.md` |
-| Product Manager | `COMPANY/team/operations/product-manager/role.md` |
-| Growth Engineer | `COMPANY/team/operations/growth-engineer/role.md` |
-| Market Researcher | `COMPANY/team/operations/market-researcher/role.md` |
-| Product Researcher | `COMPANY/team/operations/product-researcher/role.md` |
-| Advertising Specialist | `COMPANY/team/operations/advertising-specialist/role.md` |
-| UX Reviewer | `COMPANY/team/operations/ux-reviewer/role.md` |
-| CFO | `COMPANY/team/cfo/role.md` (INACTIVE) |
+| CEO | `company/team/ceo/role.md` |
+| CTO | `company/team/technology/cto/role.md` |
+| Technology Manager | `company/team/technology/technology-manager/role.md` |
+| Frontend Engineer | `company/team/technology/frontend-engineer/role.md` |
+| Backend Engineer | `company/team/technology/backend-engineer/role.md` |
+| AI Engineer | `company/team/technology/ai-engineer/role.md` |
+| DevOps Engineer | `company/team/technology/devops-engineer/role.md` |
+| COO | `company/team/operations/coo/role.md` |
+| Product Manager | `company/team/operations/product-manager/role.md` |
+| Growth Engineer | `company/team/operations/growth-engineer/role.md` |
+| Market Researcher | `company/team/operations/market-researcher/role.md` |
+| Product Researcher | `company/team/operations/product-researcher/role.md` |
+| Advertising Specialist | `company/team/operations/advertising-specialist/role.md` |
+| UX Reviewer | `company/team/operations/ux-reviewer/role.md` |
+| CFO | `company/team/cfo/role.md` (INACTIVE) |
 
 ---
 
@@ -194,7 +194,7 @@ Every task brief must include these fields in this order:
 - **Chain of command is strict.** CEO briefs go to CTO and COO only. CTO briefs go to Technology Manager only. TM briefs go to engineers. COO briefs go to Product Manager only. PM briefs go to specialists. No skipping levels.
 - **Managers return subpar work.** They do not fix it themselves — they write a Return Report and send it back down.
 - **Managers update subordinate role.md files** when patterns of subpar work emerge (2+ returns for the same issue).
-- **CEO escalates to Board** when uncertain. Board corrections are recorded in `COMPANY/team/ceo/learning.md`.
+- **CEO escalates to Board** when uncertain. Board corrections are recorded in `company/team/ceo/learning.md`.
 - **Lateral dependency resolution is mandatory before escalating.** When a block is discovered mid-work, it must be resolved at the lowest possible level. See the Lateral Dependency Resolution protocol below.
 
 ---
@@ -274,7 +274,7 @@ Each engineer session opens in their assigned worktree path. The CEO session sta
 ```
 README.md                          Board-level company overview
 CLAUDE.md                          This file
-COMPANY/team/
+company/team/
   ceo/                             CEO — git authority, Board escalation
   cfo/                             CFO — INACTIVE until Phase 2
   technology/
@@ -299,7 +299,7 @@ tasks/                             Agent inbox — task briefs and deliverables
 forkd/                             React Native app source code (created M0/M1)
 ```
 
-Each `COMPANY/team/[role]/` folder contains: `role.md`, `learning.md`, `review.md`, `archive/`
+Each `company/team/[role]/` folder contains: `role.md`, `learning.md`, `review.md`, `archive/`
 
 ---
 
@@ -319,4 +319,4 @@ Each `COMPANY/team/[role]/` folder contains: `role.md`, `learning.md`, `review.m
 
 M0 completion: Expo Go connection is blocked by Windows Firewall on port 8081.
 DevOps Engineer owns this fix. Task brief in `tasks/devops-engineer/`.
-See `COMPANY/team/technology/devops-engineer/role.md` for fix details.
+See `company/team/technology/devops-engineer/role.md` for fix details.
