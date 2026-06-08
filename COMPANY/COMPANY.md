@@ -36,4 +36,4 @@ Board (Henry) — ultimate authority
 ```
 
 ## Team
-Role definitions, learning logs, and review cycles are in `company/team/`.
+Role definitions, learning logs, and review cycles are in `COMPANY/team/`.
