@@ -41,7 +41,7 @@ Do not advance to the next milestone until every gate checkbox is checked.
 - [x] Build follow/unfollow system
 - [x] Build settings screen (edit profile, change password)
 - [x] Build tab navigation (Home, Search, Upload, Profile)
-- [ ] Supabase Storage `avatars` bucket — Backend Engineer brief in flight
+- [ ] Supabase Storage `avatars` bucket — migration `forkd/supabase/migrations/20260608000003_avatars_storage_bucket.sql` (apply via `supabase db push`; device-verify under FOR-25)
 
 ### Prompt for Cursor/Claude Code
 > "Using React Native with Expo and Supabase, build a complete authentication flow including email/password signup, Google OAuth, user profile creation with avatar/bio/follower count display, and a follow/unfollow system. Use Supabase Auth. Create the `profiles` and `follows` tables with RLS policies. Add a 4-tab navigator: Home, Search, Upload, Profile."
