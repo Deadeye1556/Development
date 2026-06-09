@@ -3,6 +3,8 @@
 **Launch target:** November 16, 2026 | **Fallback:** January 1, 2027
 **Weekly capacity:** 5–6 hours | **Total estimated:** 61–121 hours | **Available:** 156 hours before launch
 
+**Live status rollup:** [Gate Tracker](./gate-tracker.md) · **Weekly plan:** [Delivery Cadence](./delivery-cadence.md) · **Release QA:** [QA Checklist](./qa-checklist.md)
+
 Do not advance to the next milestone until every gate checkbox is checked.
 
 ---
