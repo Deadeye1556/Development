@@ -1,0 +1,18 @@
+project_id = "forkd"
+
+# Edge Functions — server-side proxy for OpenAI + USDA so no provider keys
+# ever ship in the Expo client bundle (CTO-1 / FOR-19).
+#
+# verify_jwt = true means each call must carry a valid Supabase user access
+# token. The client sends it automatically via supabase.functions.invoke().
+# This keeps our OpenAI wallet behind app authentication (least privilege).
+#
+# Provider secrets are NOT stored here. Set them out-of-band, never committed:
+#   supabase secrets set OPENAI_API_KEY=sk-...
+#   supabase secrets set USDA_API_KEY=...        # optional; DEMO_KEY fallback
+
+[functions.analyze-nutrition]
+verify_jwt = true
+
+[functions.analyze-photo]
+verify_jwt = true
